@@ -1,0 +1,3 @@
+FROM ubuntu:14.04
+EXPOSE 22
+VOLUME /tmp
