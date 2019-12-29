@@ -29,3 +29,13 @@ $ docker create -v /data/index.html --name datastore ubuntu
 $ docker run --rm -it --volumes-from datastore ubuntu                                        
 ```
 
+### docker swarm
+
+```shell
+# 通过 docker-machine 创建集群
+# 在 ~/.docker/machine/cache/ 目录下安装 boot2docker.iso。再如下操作创建 管理节点 和 工作节点
+$ docker-machine create --virtualbox-boot2docker-url ~/.docker/machine/cache/boot2docker.iso --engine-registry-mirror https://registry.docker-cn.com ManagerX
+
+$ docker-machine create --virtualbox-boot2docker-url ~/.docker/machine/cache/boot2docker.iso --engine-registry-mirror https://registry.docker-cn.com WorkerA
+```
+
