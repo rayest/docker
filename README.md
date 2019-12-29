@@ -16,3 +16,16 @@ root@CONTAINER_ID:/# apt-get update && apt-get install iputils-ping
 root@CONTAINER_ID:/# ping ANOTHER_CONTAINER_NAME
 ```
 
+### 数据卷
+
+```shell
+# 1. 新建容器 httpd，并把主机上指定文件挂载到容器的指定目录下
+$ docker pull httpd
+$ docker run -d -it -p 80:80 --name httpd-demo2 -v /Users/lirui/Documents/test/:/usr/local/apache2/htdocs httpd
+# 修改主机 index.html 文件内容，访问 http://127.0.0.1/index.html
+
+# 2. 容器分享数据卷给另一个容器
+$ docker create -v /data/index.html --name datastore ubuntu
+$ docker run --rm -it --volumes-from datastore ubuntu                                        
+```
+
